@@ -1,0 +1,44 @@
+ECEN602 HOMEWORK 1
+Naga Raghavedra Anudeep Tungala 
+and JiajunYang
+
+Here is the README documents, includeing the architecture and the usage.
+
+##########################################################################################################################################
+
+
+ARCHITECTURE:
+
+Server: 
+The chat room server program including two files, ServerMain.c and sbcp.h. The sbcp.h includes the data struct we used in the ServerMain.c. And the ServerMain.c includes several functions for packing data as SBCP Protocol(FwdPackData), unpacking data from SBCP Protocol(unpack_Joindata), Forward the messages from one client to other clients(FwdPackData) and sending error reason to the clients(FwdErrorData).
+
+Client:
+The chat room client program including two files, ClientMain.c and ClientFunc.c. In ClientMain.c, it only contains the main function, and the ClientFunc.c contains the functions used in main(). The function Join() is for the Join message to the server. And the SendMsg() is for packing data as SBCP Protocol and send the data to the server. The unpackdata() is used to unpack data from SBCP format to the standard format, and then shows in the screen.
+
+Main Function:
+The server and client main() can be found in the ServerMain.c and ClientMain.c recpectively.
+
+
+###########################################################################################################################################
+
+
+USAGE:
+
+There is a make file for compiling.
+
+Server:
+Using “make server” to compile the server.
+
+Client:
+Using “make client ” to compile the client.
+
+Otherwise, just using “make all” to compile both the server and client.
+
+The server should be launched as follows:
+<./server server_ip server_port max_clients>
+
+The client should be launched as follows:
+<./client username server_ip server_port>
+
+Clients can broadcast messages to other clients. And when a client joins the chat room or leave the chat room, the other clients in the chat room can be notified. Also, when a new client enter the chat room, the server will supply the available username to the new client.
+
